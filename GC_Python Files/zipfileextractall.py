@@ -12,4 +12,4 @@ extract_path='/content/ExtFile'
 
 with zipfile.ZipFile('/content/sample_data/HRcommasep1603576336980.zip', 'r') as zip_ref:
        zip_ref.extractall('extract_path')
-       print('File Extraction Succesful:')
+       print('File Extraction Successfull:')
