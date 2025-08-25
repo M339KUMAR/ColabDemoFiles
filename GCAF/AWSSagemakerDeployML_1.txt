@@ -1,0 +1,57 @@
+
+"""Deploying a trained 
+machine learning model for 
+inference in AWS SageMaker and 
+cleaning up the associated resources 
+involves several steps using the 
+SageMaker Python SDK
+
+
+Step 1:Deploying the Model: 
+========================================
+To deploy a trained model, 
+create a Model object and then use its
+ deploy method. This requires specifying
+ the model data location (e.g., S3 path),
+ the SageMaker estimator or framework used
+ for training, an instance type for the 
+endpoint, and the number of instances. 
+
+
+Step 2: Performing Inference: 
+========================================
+Once deployed, use the predictor 
+object to send data for inference. 
+
+Step 3: Cleaning Up Resources: 
+========================================
+After completing inference or 
+when the endpoint is no longer needed, 
+delete the endpoint and its 
+associated resources to avoid incurring 
+unnecessary costs. 
+
+
+Important Notes:----->
+========================================
+IAM Role:
+Ensure the SageMaker execution role has 
+the necessary permissions to access S3, 
+create endpoints, and manage resources.
+
+inference.py:
+The entry_point in PyTorchModel 
+(or equivalent for other frameworks) 
+refers to your Python script containing 
+the model_fn (to load the model) 
+and predict_fn (for inference logic).
+
+Error Handling:
+Implement robust error handling for 
+production deployments.
+
+Cost Management:
+Always remember to clean up resources, 
+especially endpoints, as they incur costs 
+while running.
+"""
