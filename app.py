@@ -48,7 +48,7 @@ if granularity == "Weekly":
     df_filtered = df_filtered.set_index('Date').resample('W').sum().reset_index()
 elif granularity == "Monthly":
     df_filtered = df_filtered.set_index('Date').resample('M').sum().reset_index()
-
+'''
 # -----------------------------
 # KPI CALCULATIONS
 # -----------------------------
@@ -71,7 +71,7 @@ col1.metric("Total Load", f"{total_load:,}")
 col2.metric("Inflow", f"{total_inflow:,}")
 col3.metric("Outflow", f"{total_outflow:,}")
 col4.metric("Backlog", f"{backlog:,}", delta=f"{balance:,}")
-
+'''
 
 # -----------------------------
 # SYSTEM LOAD OVERVIEW
