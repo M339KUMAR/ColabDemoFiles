@@ -69,6 +69,17 @@ st.set_page_config(layout="wide")
 
 st.title("📊 HHS Care System Dashboard")
 
+# -------------------------------
+# KPI SECTION
+# -------------------------------
+st.subheader("🔑 Key Metrics")
+
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric("Total Load", int(df['Total_Load'].iloc[-1]))
+col2.metric("Net Intake", int(df['Net_Intake'].iloc[-1]))
+col3.metric("Growth Rate %", round(df['Growth_Rate'].iloc[-1], 2))
+col4.metric("Backlog Active", int(df['Backlog'].sum()))
 
 st.sidebar.header("🔧 Filters")
 
