@@ -119,8 +119,8 @@ df_filtered = df[
 
 # Resampling based on granularity
 if granularity == "Weekly":
-    df_filtered = df_filtered.set_index('Date').resample('W').sum().reset_index()
+    df_filtered = df_filtered.index.resample('W').sum().reset_index()
 elif granularity == "Monthly":
-    df_filtered = df_filtered.set_index('Date').resample('M').sum().reset_index()
+    df_filtered = df_filtered.index.resample('M').sum().reset_index()
 
 
