@@ -84,7 +84,7 @@ col1, col2, col3, col4 = st.columns(4)
 
 col1.metric("Total Load", int(df['Total_Load'].iloc[-1]))
 col2.metric("Net Intake", int(df['Net_Intake'].iloc[-1]))
-col3.metric("Growth Rate %", round(df['Growth_Rate'].mean(), 2))
+col3.metric("Growth Rate %", round(df['Growth_Rate'].max(), 2))
 col4.metric("Backlog Active", int(df['Backlog'].sum()))
 
 st.sidebar.header("🔧 Filters")
