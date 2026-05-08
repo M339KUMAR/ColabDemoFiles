@@ -137,3 +137,11 @@ city = st.sidebar.selectbox("Select City", data["City"].unique())
 filtered_data = data[data["City"] == city]
 
 st.write(filtered_data)
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.metric("Revenue", 50000)
+
+with col2:
+    st.metric("Profit", 12000)
