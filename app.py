@@ -124,23 +124,3 @@ elif granularity == "Monthly":
     df_filtered = df_filtered.set_index('Date').resample('M').sum().reset_index()
 
 
-data = pd.DataFrame({
-    "City": ["Delhi", "Mumbai", "Chennai", "Delhi", "Mumbai"],
-    "Sales": [100, 200, 150, 300, 250]
-})
-
-st.sidebar.title("Filters")
-
-city = st.sidebar.selectbox("Select City", data["City"].unique())
-
-filtered_data = data[data["City"] == city]
-
-st.write(filtered_data)
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.metric("Revenue", 50000)
-
-with col2:
-    st.metric("Profit", 12000)
