@@ -56,6 +56,8 @@ df['14_day_avg'] = df['Total_Load'].rolling(14).mean()
 
 last_avg = df['Total_Load'].rolling(7).mean().iloc[-1]
 
+days=30
+
 future_dates = pd.date_range(start=df.index[-1], periods=days+1)[1:]
 
 forecast_values = [last_avg] * days
