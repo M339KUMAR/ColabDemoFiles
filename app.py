@@ -48,7 +48,10 @@ df['Total_Load'] = df['Children in CBP custody'] + df['Children in HHS Care']
 df['Net_Intake'] = df['Children transferred out of CBP custody'] - df['Children discharged from HHS Care']
 
 # Growth rate
-df['Growth_Rate'] = df['Total_Load'].pct_change() * 100
+#df['Growth_Rate'] = df['Total_Load'].pct_change() * 100
+df['Growth_Rate'] = (
+    df['Total_Load'].pct_change() * 100
+).fillna(0)
 
 # Backlog indicator
 df['Backlog'] = (df['Net_Intake'] > 0).astype(int)
