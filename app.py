@@ -25,3 +25,15 @@ date_range = st.sidebar.date_input(
     "Select Date Range",
     [min_date, max_date]
 )
+
+# Metric toggle
+metric = st.sidebar.selectbox(
+    "Select Metric",
+    ["Total", "Inflow", "Outflow", "Backlog"]
+)
+
+# Time granularity
+granularity = st.sidebar.selectbox(
+    "Time Granularity",
+    ["Daily", "Weekly", "Monthly"]
+)
