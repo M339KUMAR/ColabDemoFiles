@@ -1,3 +1,10 @@
+# Date                                             
+# Children apprehended and placed in CBP custody       
+# Children in CBP custody                              
+# Children transferred out of CBP custody             
+# Children in HHS Care                               
+# Children discharged from HHS Care
+
 
 import streamlit as st
 import pandas as pd
