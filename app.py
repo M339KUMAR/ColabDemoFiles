@@ -107,9 +107,14 @@ granularity = st.sidebar.selectbox(
     ["Daily", "Weekly", "Monthly"]
 )
 
+#df_filtered = df[
+#    (df['Date'] >= pd.to_datetime(date_range[0])) &
+#    (df['Date'] <= pd.to_datetime(date_range[1]))
+#]
+
 df_filtered = df[
-    (df['Date'] >= pd.to_datetime(date_range[0])) &
-    (df['Date'] <= pd.to_datetime(date_range[1]))
+    (df.index >= pd.to_datetime(date_range[0])) &
+    (df.index <= pd.to_datetime(date_range[1]))
 ]
 
 # Resampling based on granularity
