@@ -14,49 +14,49 @@ st.write("Hello PRAVEENKUMAR MOPURU")
 st.write("----------------------------")
 st.dataframe(df['Date'])
 
-    # Convert to datetime
-    df['Date'] = pd.to_datetime(df['Date'])
+# Convert to datetime
+df['Date'] = pd.to_datetime(df['Date'])
 
-    # Sort chronologically
-    df = df.sort_values('Date')
+# Sort chronologically
+df = df.sort_values('Date')
 
-    # Create complete daily index
-    df = df.set_index('Date').asfreq('D')
+# Create complete daily index
+df = df.set_index('Date').asfreq('D')
 
-    # Missing values
-    df = df.fillna(0)
+# Missing values
+df = df.fillna(0)
 
-    # Logical constraints
-    df['Anomaly_Flag'] = 0
+# Logical constraints
+df['Anomaly_Flag'] = 0
 
-    df.loc[df['Transfers'] > df['CBP_Custody'], 'Anomaly_Flag'] = 1
-    df.loc[df['Discharges'] > df['HHS_Care'], 'Anomaly_Flag'] = 1
+df.loc[df['Transfers'] > df['CBP_Custody'], 'Anomaly_Flag'] = 1
+df.loc[df['Discharges'] > df['HHS_Care'], 'Anomaly_Flag'] = 1
 
-    # Total system load
-    df['Total_Load'] = df['CBP_Custody'] + df['HHS_Care']
+# Total system load
+df['Total_Load'] = df['CBP_Custody'] + df['HHS_Care']
 
-    # Net intake
-    df['Net_Intake'] = df['Transfers'] - df['Discharges']
+# Net intake
+df['Net_Intake'] = df['Transfers'] - df['Discharges']
 
-    # Growth rate
-    df['Growth_Rate'] = df['Total_Load'].pct_change() * 100
+# Growth rate
+df['Growth_Rate'] = df['Total_Load'].pct_change() * 100
 
-    # Backlog indicator
-    df['Backlog'] = (df['Net_Intake'] > 0).astype(int)
+# Backlog indicator
+df['Backlog'] = (df['Net_Intake'] > 0).astype(int)
 
-    df['7_day_avg'] = df['Total_Load'].rolling(7).mean()
-    df['14_day_avg'] = df['Total_Load'].rolling(14).mean()
+df['7_day_avg'] = df['Total_Load'].rolling(7).mean()
+df['14_day_avg'] = df['Total_Load'].rolling(14).mean()
 
-    last_avg = df['Total_Load'].rolling(7).mean().iloc[-1]
+last_avg = df['Total_Load'].rolling(7).mean().iloc[-1]
 
-    future_dates = pd.date_range(start=df.index[-1], periods=days+1)[1:]
+future_dates = pd.date_range(start=df.index[-1], periods=days+1)[1:]
 
-    forecast_values = [last_avg] * days
+forecast_values = [last_avg] * days
 
-    forecast_df = pd.DataFrame({
-        'Date': future_dates,
-        'Forecast_Load': forecast_values
-    })
+forecast_df = pd.DataFrame({
+    'Date': future_dates,
+    'Forecast_Load': forecast_values
+})
 
 st.set_page_config(layout="wide")
 
