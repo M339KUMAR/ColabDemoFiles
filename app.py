@@ -13,3 +13,15 @@ st.write("----------------------------")
 st.write("Hello PRAVEENKUMAR MOPURU")
 st.write("----------------------------")
 st.dataframe(df['Date'])
+
+
+st.sidebar.header("🔧 Filters")
+
+# Date range selector
+min_date = df['Date'].min()
+max_date = df['Date'].max()
+
+date_range = st.sidebar.date_input(
+    "Select Date Range",
+    [min_date, max_date]
+)
