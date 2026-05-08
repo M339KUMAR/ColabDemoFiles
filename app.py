@@ -29,8 +29,8 @@ df = df.fillna(0)
 # Logical constraints
 df['Anomaly_Flag'] = 0
 
-df.loc[df['Transfers'] > df['CBP_Custody'], 'Anomaly_Flag'] = 1
-df.loc[df['Discharges'] > df['HHS_Care'], 'Anomaly_Flag'] = 1
+df.loc[(df['Transfers'] > df['CBP_Custody']), 'Anomaly_Flag'] = 1
+df.loc[(df['Discharges'] > df['HHS_Care']), 'Anomaly_Flag'] = 1
 
 # Total system load
 df['Total_Load'] = df['CBP_Custody'] + df['HHS_Care']
