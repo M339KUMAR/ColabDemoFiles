@@ -36,14 +36,14 @@ df = df.fillna(0)
 # Logical constraints
 df['Anomaly_Flag'] = 0
 
-df.loc[(df['Transfers'] > df['CBP_Custody']), 'Anomaly_Flag'] = 1
-df.loc[(df['Discharges'] > df['HHS_Care']), 'Anomaly_Flag'] = 1
+df.loc[(df['Children transferred out of CBP custody'] > df['Children in CBP custody']), 'Anomaly_Flag'] = 1
+df.loc[(df['Children discharged from HHS Care'] > df['Children in HHS Care']), 'Anomaly_Flag'] = 1
 
 # Total system load
-df['Total_Load'] = df['CBP_Custody'] + df['HHS_Care']
+df['Total_Load'] = df['Children in CBP custody'] + df['Children in HHS Care']
 
 # Net intake
-df['Net_Intake'] = df['Transfers'] - df['Discharges']
+df['Net_Intake'] = df['Children transferred out of CBP custody'] - df['Children discharged from HHS Care']
 
 # Growth rate
 df['Growth_Rate'] = df['Total_Load'].pct_change() * 100
