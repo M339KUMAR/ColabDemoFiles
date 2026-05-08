@@ -10,6 +10,8 @@ import streamlit as st
 import pandas as pd
 import openpyxl
 
+st.set_page_config(layout="wide")
+
 #df = pd.read_excel('/content/sample_data/HHS_Unaccompanied_Alien_Children_Program.xlsx')
 df = pd.read_excel('HHS_Unaccompanied_Alien_Children_Program.xlsx', engine='openpyxl')
 st.title("Hello from Colab via ngrok")
@@ -67,7 +69,6 @@ forecast_df = pd.DataFrame({
     'Forecast_Load': forecast_values
 })
 
-st.set_page_config(layout="wide")
 
 st.title("📊 HHS Care System Dashboard")
 
