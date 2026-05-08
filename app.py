@@ -71,7 +71,7 @@ col1.metric("Total Load", f"{total_load:,}")
 col2.metric("Inflow", f"{total_inflow:,}")
 col3.metric("Outflow", f"{total_outflow:,}")
 col4.metric("Backlog", f"{backlog:,}", delta=f"{balance:,}")
-'''
+
 
 # -----------------------------
 # SYSTEM LOAD OVERVIEW
@@ -123,3 +123,17 @@ ax4.plot(df_filtered['Date'], df_filtered['Total'])
 ax4.axhline(threshold)
 ax4.set_title("Stress Periods (Above Avg Load)")
 st.pyplot(fig4)
+'''
+
+data = pd.DataFrame({
+    "City": ["Delhi", "Mumbai", "Chennai", "Delhi", "Mumbai"],
+    "Sales": [100, 200, 150, 300, 250]
+})
+
+st.sidebar.title("Filters")
+
+city = st.sidebar.selectbox("Select City", data["City"].unique())
+
+filtered_data = data[data["City"] == city]
+
+st.write(filtered_data)
