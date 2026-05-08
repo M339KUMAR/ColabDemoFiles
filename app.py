@@ -14,6 +14,54 @@ st.write("Hello PRAVEENKUMAR MOPURU")
 st.write("----------------------------")
 st.dataframe(df['Date'])
 
+    # Convert to datetime
+    df['Date'] = pd.to_datetime(df['Date'])
+
+    # Sort chronologically
+    df = df.sort_values('Date')
+
+    # Create complete daily index
+    df = df.set_index('Date').asfreq('D')
+
+    # Missing values
+    df = df.fillna(0)
+
+    # Logical constraints
+    df['Anomaly_Flag'] = 0
+
+    df.loc[df['Transfers'] > df['CBP_Custody'], 'Anomaly_Flag'] = 1
+    df.loc[df['Discharges'] > df['HHS_Care'], 'Anomaly_Flag'] = 1
+
+    # Total system load
+    df['Total_Load'] = df['CBP_Custody'] + df['HHS_Care']
+
+    # Net intake
+    df['Net_Intake'] = df['Transfers'] - df['Discharges']
+
+    # Growth rate
+    df['Growth_Rate'] = df['Total_Load'].pct_change() * 100
+
+    # Backlog indicator
+    df['Backlog'] = (df['Net_Intake'] > 0).astype(int)
+
+    df['7_day_avg'] = df['Total_Load'].rolling(7).mean()
+    df['14_day_avg'] = df['Total_Load'].rolling(14).mean()
+
+    last_avg = df['Total_Load'].rolling(7).mean().iloc[-1]
+
+    future_dates = pd.date_range(start=df.index[-1], periods=days+1)[1:]
+
+    forecast_values = [last_avg] * days
+
+    forecast_df = pd.DataFrame({
+        'Date': future_dates,
+        'Forecast_Load': forecast_values
+    })
+
+st.set_page_config(layout="wide")
+
+st.title("📊 HHS Care System Dashboard")
+
 
 st.sidebar.header("🔧 Filters")
 
@@ -48,82 +96,7 @@ if granularity == "Weekly":
     df_filtered = df_filtered.set_index('Date').resample('W').sum().reset_index()
 elif granularity == "Monthly":
     df_filtered = df_filtered.set_index('Date').resample('M').sum().reset_index()
-'''
-# -----------------------------
-# KPI CALCULATIONS
-# -----------------------------
-total_load = df_filtered['Total'].sum()
-total_inflow = df_filtered['Inflow'].sum()
-total_outflow = df_filtered['Outflow'].sum()
-backlog = df_filtered['Backlog'].iloc[-1]
 
-balance = total_inflow - total_outflow
-
-
-# -----------------------------
-# KPI SUMMARY CARDS
-# -----------------------------
-st.subheader("📌 KPI Summary")
-
-col1, col2, col3, col4 = st.columns(4)
-
-col1.metric("Total Load", f"{total_load:,}")
-col2.metric("Inflow", f"{total_inflow:,}")
-col3.metric("Outflow", f"{total_outflow:,}")
-col4.metric("Backlog", f"{backlog:,}", delta=f"{balance:,}")
-
-
-# -----------------------------
-# SYSTEM LOAD OVERVIEW
-# -----------------------------
-st.subheader("📈 System Load Overview")
-
-fig1, ax1 = plt.subplots()
-ax1.plot(df_filtered['Date'], df_filtered['Total'])
-ax1.set_title("Total System Load Over Time")
-st.pyplot(fig1)
-
-# -----------------------------
-# CBP vs HHS COMPARISON
-# -----------------------------
-st.subheader("⚖️ CBP vs HHS Load Comparison")
-
-fig2, ax2 = plt.subplots()
-ax2.plot(df_filtered['Date'], df_filtered['CBP'], label='CBP')
-ax2.plot(df_filtered['Date'], df_filtered['HHS'], label='HHS')
-ax2.legend()
-ax2.set_title("CBP vs HHS Load")
-st.pyplot(fig2)
-
-# -----------------------------
-# NET INTAKE & BACKLOG
-# -----------------------------
-st.subheader("📊 Net Intake & Backlog Trends")
-
-df_filtered['Net Intake'] = df_filtered['Inflow'] - df_filtered['Outflow']
-
-fig3, ax3 = plt.subplots()
-ax3.plot(df_filtered['Date'], df_filtered['Net Intake'], label="Net Intake")
-ax3.plot(df_filtered['Date'], df_filtered['Backlog'], label="Backlog")
-ax3.legend()
-ax3.set_title("Net Intake & Backlog")
-st.pyplot(fig3)
-
-# -----------------------------
-# CAPACITY STRESS ANALYSIS
-# -----------------------------
-st.subheader("🚨 Capacity Stress & Relief")
-
-threshold = df_filtered['Total'].mean()
-
-df_filtered['Stress'] = df_filtered['Total'] > threshold
-
-fig4, ax4 = plt.subplots()
-ax4.plot(df_filtered['Date'], df_filtered['Total'])
-ax4.axhline(threshold)
-ax4.set_title("Stress Periods (Above Avg Load)")
-st.pyplot(fig4)
-'''
 
 data = pd.DataFrame({
     "City": ["Delhi", "Mumbai", "Chennai", "Delhi", "Mumbai"],
