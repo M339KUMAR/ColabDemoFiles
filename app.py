@@ -87,8 +87,8 @@ col4.metric("Backlog Active", int(df['Backlog'].sum()))
 st.sidebar.header("🔧 Filters")
 
 # Date range selector
-min_date = df['Date'].min()
-max_date = df['Date'].max()
+min_date = df.index.min()
+max_date = df.index.max()
 
 date_range = st.sidebar.date_input(
     "Select Date Range",
