@@ -10,8 +10,8 @@ import streamlit as st
 import pandas as pd
 import openpyxl
 import matplotlib.pyplot as plt
-#from ydata_profiling import ProfileReport
-from data_profiling.profile_report import ProfileReport
+from ydata_profiling import ProfileReport
+#from data_profiling.profile_report import ProfileReport
 import streamlit.components.v1 as components
 
 st.set_page_config(layout="wide")
@@ -32,7 +32,7 @@ st.write("***📌US-HHS Unaccompanied Children Program  Dashboard***")
 st.dataframe(df)
 
 #from ydata_profiling import ProfileReport
-report = ProfileReport(df)
+report = ProfileReport(df, explorative=True)
 # Save report
 #profile.to_file("report.html")
 html = report.to_html()
