@@ -34,7 +34,7 @@ st.dataframe(df)
 
 #st.dataframe(df['Date'])
 
-col1, col2 = st.columns([1, 3])
+col1, col2 = st.columns([1, 5])
 
 with col1:
     # Create a Matplotlib figure
@@ -49,7 +49,7 @@ with col1:
        st.pyplot(fig)
 
 with col2:
-    st.write("Click the PLOT Button ti Dusplay the Graph")
+    st.write("Click the PLOT Button to Display the Graph")
 
 
 # Convert to datetime
