@@ -42,7 +42,11 @@ ax.set_xlabel("Date")
 ax.set_ylabel("CBP Custidy")
 ax.legend()
 
-st.pyplot(fig)
+#st.pyplot(fig)
+if st.button("Plot"):
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    st.pyplot(fig)
 
 # Convert to datetime
 df['Date'] = pd.to_datetime(df['Date'])
