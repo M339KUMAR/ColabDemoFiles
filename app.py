@@ -53,6 +53,12 @@ with col1:
 with col2:
     st.write("Click the PLOT Button to Display the Graph")
 
+# Convert datetime
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Sort from oldest to newest
+df = df.sort_values(by='Date', ascending=True)
+
 col1, col2 = st.columns([0.5, 5])
 
 with col1:
