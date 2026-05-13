@@ -33,6 +33,15 @@ st.dataframe(df)
 
 #st.dataframe(df['Date'])
 
+# Create a Matplotlib figure
+fig, ax = plt.subplots()
+ax.plot(df['Date'], df['Children in CBP custody'], label="sin(x)")
+ax.set_title("Children in CBP Custody")
+ax.set_xlabel("Date")
+ax.set_ylabel("CBP Custidy")
+ax.legend()
+
+
 # Convert to datetime
 df['Date'] = pd.to_datetime(df['Date'])
 
