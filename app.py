@@ -80,9 +80,11 @@ df['Net_Intake'] = df['Children transferred out of CBP custody'] - df['Children 
 
 # Growth rate
 #df['Growth_Rate'] = df['Total_Load'].pct_change() * 100
-df['Growth_Rate'] = (
-    df['Total_Load'].pct_change() * 100
-).fillna(0)
+#df['Growth_Rate'] = (
+#    df['Total_Load'].pct_change() * 100
+#).fillna(0)
+
+df['Growth_Rate'] = df['Total_Load'].rolling(7).mean()
 
 # Backlog indicator
 df['Backlog'] = (df['Net_Intake'] > 0).astype(int)
