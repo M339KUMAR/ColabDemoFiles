@@ -35,7 +35,7 @@ st.dataframe(df)
 #st.dataframe(df['Date'])
 st.title("📊 HHS Care System Dashboard")
 
-col1, col2 = st.columns([0.5, 5])
+col1, col2 = st.columns([0.75, 5])
 
 with col1:
     # Create a Matplotlib figure
@@ -59,7 +59,7 @@ df['Date'] = pd.to_datetime(df['Date'])
 # Sort from oldest to newest
 df = df.sort_values(by='Date', ascending=True)
 
-col1, col2 = st.columns([0.5, 5])
+col1, col2 = st.columns([0.75, 5])
 
 with col1:
  if st.button("Plot-2"):
