@@ -34,7 +34,7 @@ st.dataframe(df)
 
 #st.dataframe(df['Date'])
 
-col1, col2 = st.columns([1, 5])
+col1, col2 = st.columns([0.5, 5])
 
 with col1:
     # Create a Matplotlib figure
