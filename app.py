@@ -11,6 +11,7 @@ import pandas as pd
 import openpyxl
 import matplotlib.pyplot as plt
 from ydata_profiling import ProfileReport
+import streamlit.components.v1 as components
 
 st.set_page_config(layout="wide")
 
@@ -31,7 +32,16 @@ st.dataframe(df)
 
 #from ydata_profiling import ProfileReport
 report = ProfileReport(df)
-st.write(report)
+# Save report
+profile.to_file("report.html")
+
+# Read HTML file
+with open("report.html", "r", encoding="utf-8") as f:
+     html = f.read()
+
+# Display in Streamlit
+components.html(html, height=1000, scrolling=True)
+
 #st.write("^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 #st.write("----------------------------")
 #st.write("Hello PRAVEENKUMAR MOPURU")
