@@ -10,7 +10,8 @@ import streamlit as st
 import pandas as pd
 import openpyxl
 import matplotlib.pyplot as plt
-from ydata_profiling import ProfileReport
+#from ydata_profiling import ProfileReport
+from data_profiling import ProfileReport
 import streamlit.components.v1 as components
 
 st.set_page_config(layout="wide")
