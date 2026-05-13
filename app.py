@@ -40,7 +40,7 @@ col1, col2 = st.columns([0.5, 5])
 with col1:
     # Create a Matplotlib figure
     #st.pyplot(fig)
-    if st.button("Plot"):
+    if st.button("Plot-1"):
        fig, ax = plt.subplots()
        ax.plot(df['Date'], df['Children in CBP custody'], color='orange', linestyle='--', label="Children in CBP Custody")
        ax.set_title("Children in CBP Custody")
@@ -53,6 +53,32 @@ with col1:
 with col2:
     st.write("Click the PLOT Button to Display the Graph")
 
+col1, col2 = st.columns([0.5, 5])
+
+with col1:
+ if st.button("Plot-2"):
+   df['Cumulative_Load'] = df['Load'].cumsum()
+   # -----------------------------
+   # Plot
+   # -----------------------------
+   fig, ax = plt.subplots(figsize=(10, 5))
+   ax.plot(
+       df['Date'],
+       df['Cumulative_Load'],
+       color='cyan',
+       linestyle='-.'
+       label = "Cumsum of Children in CBP Custody"
+   )
+   ax.set_title("Cumulative Load Over Time")
+   ax.set_xlabel("Date")
+   ax.set_ylabel("Cumulative Load")
+   ax.legend()
+   # Rotate x-axis labels
+   plt.xticks(rotation=45)
+   st.pyplot(fig)
+
+with col2:
+    st.write("Click the PLOT Button to Display the CumSum of CBP Custody")
 
 # Convert to datetime
 df['Date'] = pd.to_datetime(df['Date'])
