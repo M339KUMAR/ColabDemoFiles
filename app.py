@@ -23,8 +23,8 @@ df = pd.read_excel('HHS_Unaccompanied_Alien_Children_Program.xlsx', engine='open
 
 
 st.markdown("<h1 style='text-align: center;'>UNIFIED MENTOR</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center;'> Data Analytics Intern</h2>, unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center;'> Project-1</h2>, unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'> Data Analytics Intern</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'> Project-1</h2>", unsafe_allow_html=True)
 st.write("***US-HHS Unaccompanied Children Program  Dashboard***")
 
 st.dataframe(df)
