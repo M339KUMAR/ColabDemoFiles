@@ -57,7 +57,7 @@ col1, col2 = st.columns([0.5, 5])
 
 with col1:
  if st.button("Plot-2"):
-   df['Cumulative_Load'] = df['Load'].cumsum()
+   df['Cumulative_Load'] = df['Children in CBP custody'].cumsum()
    # -----------------------------
    # Plot
    # -----------------------------
