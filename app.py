@@ -66,7 +66,7 @@ with col1:
        df['Date'],
        df['Cumulative_Load'],
        color='cyan',
-       linestyle='-.'
+       linestyle='-.',
        label = "Cumsum of Children in CBP Custody"
    )
    ax.set_title("Cumulative Load Over Time")
