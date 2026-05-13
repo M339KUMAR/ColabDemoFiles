@@ -33,11 +33,12 @@ st.dataframe(df)
 #from ydata_profiling import ProfileReport
 report = ProfileReport(df)
 # Save report
-profile.to_file("report.html")
+#profile.to_file("report.html")
+html = report.to_html()
 
 # Read HTML file
-with open("report.html", "r", encoding="utf-8") as f:
-     html = f.read()
+#with open("report.html", "r", encoding="utf-8") as f:
+#     html = f.read()
 
 # Display in Streamlit
 components.html(html, height=1000, scrolling=True)
