@@ -109,7 +109,8 @@ forecast_df = pd.DataFrame({
 # -------------------------------
 # KPI SECTION
 # -------------------------------
-st.subheader("🔑 Key Metrics")
+#st.subheader("🔑 Key Metrics")
+st.subheader("🔑 Key Performance Indicators")
 
 col1, col2, col3, col4 = st.columns(4)
 
