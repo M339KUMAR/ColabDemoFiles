@@ -33,6 +33,7 @@ st.dataframe(df)
 #st.write("----------------------------")
 
 #st.dataframe(df['Date'])
+st.title("📊 HHS Care System Dashboard")
 
 col1, col2 = st.columns([0.5, 5])
 
@@ -103,7 +104,7 @@ forecast_df = pd.DataFrame({
 })
 
 
-st.title("📊 HHS Care System Dashboard")
+# st.title("📊 HHS Care System Dashboard")
 
 # -------------------------------
 # KPI SECTION
@@ -114,7 +115,7 @@ col1, col2, col3, col4 = st.columns(4)
 
 col1.metric("Total Load", int(df['Total_Load'].iloc[-1]), "+50",  delta_color ="normal" )
 col2.metric("Net Intake", int(df['Net_Intake'].iloc[-1]), "-1", delta_color ="normal" )
-col3.metric("Growth Rate %", round(df['Growth_Rate'].iloc[0], 2), "%")
+col3.metric("Growth Rate %", round(df['Growth_Rate'].iloc[0], 2), "0%")
 col4.metric("Backlog Active", int(df['Backlog'].sum()), "+5", delta_color ="normal" )
 
 st.sidebar.header("🔧 Filters")
