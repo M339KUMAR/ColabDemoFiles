@@ -10,6 +10,7 @@ import streamlit as st
 import pandas as pd
 import openpyxl
 import matplotlib.pyplot as plt
+from ydata_profiling import ProfileReport
 
 st.set_page_config(layout="wide")
 
@@ -27,6 +28,10 @@ st.markdown("<h2 style='text-align: center;'> Project-1</h2>", unsafe_allow_html
 st.write("***📌US-HHS Unaccompanied Children Program  Dashboard***")
 
 st.dataframe(df)
+
+#from ydata_profiling import ProfileReport
+report = ProfileReport(df)
+st.write(report)
 #st.write("^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 #st.write("----------------------------")
 #st.write("Hello PRAVEENKUMAR MOPURU")
