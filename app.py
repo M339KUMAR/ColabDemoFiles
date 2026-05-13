@@ -41,10 +41,11 @@ with col1:
     #st.pyplot(fig)
     if st.button("Plot"):
        fig, ax = plt.subplots()
-       ax.plot(df['Date'], df['Children in CBP custody'], label="sin(x)")
+       ax.plot(df['Date'], df['Children in CBP custody'], label="Children in CBP Custody")
        ax.set_title("Children in CBP Custody")
        ax.set_xlabel("Date")
        ax.set_ylabel("CBP Custidy")
+       ax.tick_params(axis='x', rotation=45)
        ax.legend()
        st.pyplot(fig)
 
