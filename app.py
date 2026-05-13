@@ -34,16 +34,23 @@ st.dataframe(df)
 
 #st.dataframe(df['Date'])
 
-# Create a Matplotlib figure
-#st.pyplot(fig)
-if st.button("Plot"):
-    fig, ax = plt.subplots()
-    ax.plot(df['Date'], df['Children in CBP custody'], label="sin(x)")
-    ax.set_title("Children in CBP Custody")
-    ax.set_xlabel("Date")
-    ax.set_ylabel("CBP Custidy")
-    ax.legend()
-    st.pyplot(fig)
+col1, col2 = st.columns([1, 3])
+
+with col1:
+    # Create a Matplotlib figure
+    #st.pyplot(fig)
+    if st.button("Plot"):
+       fig, ax = plt.subplots()
+       ax.plot(df['Date'], df['Children in CBP custody'], label="sin(x)")
+       ax.set_title("Children in CBP Custody")
+       ax.set_xlabel("Date")
+       ax.set_ylabel("CBP Custidy")
+       ax.legend()
+       st.pyplot(fig)
+
+with col2:
+    st.write("Click the PLOT Button ti Dusplay the Graph")
+
 
 # Convert to datetime
 df['Date'] = pd.to_datetime(df['Date'])
