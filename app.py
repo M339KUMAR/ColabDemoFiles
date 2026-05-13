@@ -18,8 +18,14 @@ df = pd.read_excel('HHS_Unaccompanied_Alien_Children_Program.xlsx', engine='open
 #st.title("Hello from Colab via ngrok")
 #st.write("This works!")
 
-st.title("Unified Mentor -\n Data Analytics Intern - Project 1")
-st.write("US-HHS Unaccompanied Children Program  Dashboard")
+#st.title("Unified Mentor")
+
+
+
+st.markdown("<h1 style='text-align: center;'>UNIFIED MENTOR</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'> Data Analytics Intern</h2>, unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'> Project-1</h2>, unsafe_allow_html=True)
+st.write("***US-HHS Unaccompanied Children Program  Dashboard***")
 
 st.dataframe(df)
 #st.write("^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
