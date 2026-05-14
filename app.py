@@ -265,7 +265,7 @@ df.index = pd.to_datetime(
 # Remove invalid dates
 df = df[df.index.notna()]
 
-filtered_df = df[(df.index.dt.date >= start_date) & (df.index.dt.date <= end_date)].copy()
+filtered_df = df[(df.index.date >= start_date) & (df.index.date <= end_date)].copy()
 
 if filtered_df.empty:
     st.warning("No data available")
