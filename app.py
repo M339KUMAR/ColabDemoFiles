@@ -44,11 +44,6 @@ html = report.to_html()
 # Display in Streamlit
 components.html(html, height=1000, scrolling=True)
 
-#st.write("^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-#st.write("----------------------------")
-#st.write("Hello PRAVEENKUMAR MOPURU")
-#st.write("----------------------------")
-
 #st.dataframe(df['Date'])
 st.title("📊 HHS Care System Dashboard")
 
@@ -154,6 +149,25 @@ forecast_df = pd.DataFrame({
     'Forecast_Load': forecast_values
 })
 
+# Total Load
+current_load = df['Total_Load'].iloc[-1]
+previous_load = df['Total_Load'].iloc[-2]
+load_delta = current_load - previous_load
+
+# Net Intake
+current_intake = df['Net_Intake'].iloc[-1]
+previous_intake = df['Net_Intake'].iloc[-2]
+intake_delta = (current_intake - previous_intake)
+
+# Growth Rate
+current_growth = df['Growth_Rate'].iloc[-1]
+previous_growth = df['Growth_Rate'].iloc[-2]
+growth_delta = (current_growth - previous_growth)
+
+# Backlog
+current_backlog = df['Backlog'].sum()
+previous_backlog = df['Backlog'].iloc[:-1].sum()
+backlog_delta = (current_backlog- previous_backlog)
 
 # st.title("📊 HHS Care System Dashboard")
 
@@ -165,10 +179,41 @@ st.subheader("🔑 Key Performance Indicators")
 
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric("Total Load", int(df['Total_Load'].iloc[-1]), "+50",  delta_color ="normal" )
-col2.metric("Net Intake", int(df['Net_Intake'].iloc[-1]), "-1", delta_color ="normal" )
-col3.metric("Growth Rate %", round(df['Growth_Rate'].iloc[0], 2), "0%")
-col4.metric("Backlog Active", int(df['Backlog'].sum()), "+5", delta_color ="normal" )
+#col1.metric("Total Load", int(df['Total_Load'].iloc[-1]), "+50",  delta_color ="normal" )
+#col2.metric("Net Intake", int(df['Net_Intake'].iloc[-1]), "-1", delta_color ="normal" )
+#col3.metric("Growth Rate %", round(df['Growth_Rate'].iloc[0], 2), "0%")
+#col4.metric("Backlog Active", int(df['Backlog'].sum()), "+5", delta_color ="normal" )
+
+with col1:
+    st.metric(
+        "Total Load",
+        int(current_load),
+        delta=f"{load_delta:+,.0f}",
+        delta_color="normal"
+    )
+
+with col2:
+    st.metric(
+        "Net Intake",
+        int(current_intake),
+        delta=f"{intake_delta:+,.0f}",
+        delta_color="normal"
+    )
+
+with col3:
+    st.metric(
+        "Growth Rate %",
+        round(current_growth, 2),
+        delta=f"{growth_delta:+.2f}%"
+    )
+
+with col4:
+    st.metric(
+        "Backlog Active",
+        int(current_backlog),
+        delta=f"{backlog_delta:+,.0f}",
+        delta_color="normal"
+    )
 
 st.sidebar.header("🔧 Filters")
 
