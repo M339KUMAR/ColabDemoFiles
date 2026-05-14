@@ -297,6 +297,7 @@ elif granularity == "Yearly":
 # Reset index
 grouped_df = grouped_df.reset_index()
 
+st.write(df.columns.tolist())
 st.write(grouped_df.columns.tolist())
 # =====================================
 # KPI CALCULATIONS
