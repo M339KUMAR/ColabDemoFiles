@@ -366,7 +366,7 @@ with col1:
 with col2:
     st.metric(
         "Net Intake Pressure",
-        valu=f"{net_intake_pressure:,.2f}%",
+        value=f"{net_intake_pressure:,.2f}%",
         delta=f"{net_intake_pressure:+,.2f}%",
         delta_color="normal"
     )
@@ -374,8 +374,8 @@ with col2:
 with col3:
     st.metric(
         "Care Load Volatility Index",
-        value=:f"{volatility_index:,.2f}%",
-        delta=:f"{volatility_index:+,.2f}%",
+        value=f"{volatility_index:,.2f}%",
+        delta=f"{volatility_index:+,.2f}%",
         delta_color="normal"
     )
 
@@ -384,16 +384,16 @@ with col3:
 with col4:
     st.metric(
         "Backlog Accumulation Rate",
-        value=:f"{backlog_rate:,.2f}%",
-        delta=:f"{backlog_rate:+,.2f}%",
+        value=f"{backlog_rate:,.2f}%",
+        delta=f"{backlog_rate:+,.2f}%",
         delta_color="normal"
     )
 
 with col5:
     st.metric(
         "Discharge Offset Ratio",
-        value=:f"{discharge_ratio:,.2f}",
-        delta=:f"{discharge_ratio:+,.2f}",
+        value=f"{discharge_ratio:,.2f}",
+        delta=f"{discharge_ratio:+,.2f}",
         delta_color="normal"
     )
 
