@@ -238,12 +238,12 @@ st.sidebar.header("🔧 Filters")
 # -------- Date Range --------
 start_date = st.sidebar.date_input(
     "Start Date",
-    value=df['Date'].min().date()
+    value=df.index.min().date()
 )
 
 end_date = st.sidebar.date_input(
     "End Date",
-    value=df['Date'].max().date()
+    value=df.index.max().date()
 )
 
 # -------- Time Granularity --------
