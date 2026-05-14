@@ -230,27 +230,49 @@ with col4:
     )
 
 st.sidebar.header("🔧 Filters")
+# =====================================
+# SIDEBAR FILTERS
+# =====================================
+#st.sidebar.header("Filters")
 
-# Date range selector
-min_date = df.index.min()
-max_date = df.index.max()
-
-date_range = st.sidebar.date_input(
-    "Select Date Range",
-    [min_date, max_date]
+# -------- Date Range --------
+start_date = st.sidebar.date_input(
+    "Start Date",
+    value=df['Date'].min().date()
 )
 
-# Metric toggle
-metric = st.sidebar.selectbox(
-    "Select Metric",
-    ["Total", "Inflow", "Outflow", "Backlog"]
+end_date = st.sidebar.date_input(
+    "End Date",
+    value=df['Date'].max().date()
 )
 
-# Time granularity
+# -------- Time Granularity --------
 granularity = st.sidebar.selectbox(
     "Time Granularity",
-    ["Daily", "Weekly", "Monthly"]
+    ["Daily", "Weekly", "Monthly", "Yearly"]
 )
+
+
+# Date range selector
+#min_date = df.index.min()
+#max_date = df.index.max()
+
+#date_range = st.sidebar.date_input(
+#    "Select Date Range",
+#    [min_date, max_date]
+#)
+
+# Metric toggle
+#metric = st.sidebar.selectbox(
+#    "Select Metric",
+#    ["Total", "Inflow", "Outflow", "Backlog"]
+#)
+
+# Time granularity
+#granularity = st.sidebar.selectbox(
+#    "Time Granularity",
+#    ["Daily", "Weekly", "Monthly"]
+#)
 
 #df_filtered = df[
 #    (df['Date'] >= pd.to_datetime(date_range[0])) &
