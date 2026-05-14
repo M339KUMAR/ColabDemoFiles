@@ -160,9 +160,23 @@ previous_intake = df['Net_Intake'].iloc[-2]
 intake_delta = (current_intake - previous_intake)
 
 # Growth Rate
-current_growth = df['Growth_Rate'].iloc[-1]
-previous_growth = df['Growth_Rate'].iloc[-2]
-growth_delta = (current_growth - previous_growth)
+#current_growth = df['Growth_Rate'].iloc[-1]
+#previous_growth = df['Growth_Rate'].iloc[-2]
+#growth_delta = (current_growth - previous_growth)
+
+current_load = df['Total_Load'].iloc[-1]
+
+# Check if previous row exists
+if len(df) > 1:
+    previous_load = df['Total_Load'].iloc[-2]
+else:
+    previous_load = current_load
+
+# Avoid divide-by-zero
+if previous_load != 0:
+    growth_rate = ((current_load - previous_load)/ previous_load) * 100
+else:
+    growth_rate = 0
 
 # Backlog
 current_backlog = df['Backlog'].sum()
@@ -203,8 +217,8 @@ with col2:
 with col3:
     st.metric(
         "Growth Rate %",
-        round(current_growth, 2),
-        delta=f"{growth_delta:+.2f}%"
+        round(growth_rate, 2),
+        delta=f"{growth_rate:+.2f}%"
     )
 
 with col4:
