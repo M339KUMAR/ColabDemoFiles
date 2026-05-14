@@ -252,7 +252,17 @@ granularity = st.sidebar.selectbox(
     ["Daily", "Weekly", "Monthly", "Yearly"]
 )
 
+# =====================================
+# DATE FILTER
+# =====================================
+filtered_df = df[(df.index.dt.date >= start_date) & (df.index.dt.date <= end_date)].copy()
 
+if filtered_df.empty:
+    st.warning("No data available")
+    st.stop()
+
+
+#------------------------------------------------
 # Date range selector
 #min_date = df.index.min()
 #max_date = df.index.max()
