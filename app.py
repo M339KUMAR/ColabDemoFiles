@@ -279,15 +279,15 @@ granularity = st.sidebar.selectbox(
 #    (df['Date'] <= pd.to_datetime(date_range[1]))
 #]
 
-df_filtered = df[
-    (df.index >= pd.to_datetime(date_range[0])) &
-    (df.index <= pd.to_datetime(date_range[1]))
-]
+#df_filtered = df[
+#    (df.index >= pd.to_datetime(date_range[0])) &
+#    (df.index <= pd.to_datetime(date_range[1]))
+#]
 
 # Resampling based on granularity
-if granularity == "Weekly":
-    df_filtered = df_filtered.resample('W').sum().reset_index()
-elif granularity == "Monthly":
-    df_filtered = df_filtered.resample('M').sum().reset_index()
+#if granularity == "Weekly":
+#    df_filtered = df_filtered.resample('W').sum().reset_index()
+#elif granularity == "Monthly":
+#    df_filtered = df_filtered.resample('M').sum().reset_index()
 
 
