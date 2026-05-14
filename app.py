@@ -261,6 +261,31 @@ if filtered_df.empty:
     st.warning("No data available")
     st.stop()
 
+# =====================================
+# APPLY TIME GRANULARITY
+# =====================================
+if granularity == "Daily":
+    grouped_df = filtered_df.groupby(
+        filtered_df.index.dt.date
+    ).sum(numeric_only=True)
+
+elif granularity == "Weekly":
+    grouped_df = filtered_df.groupby(
+        filtered_df.index.dt.to_period('W')
+    ).sum(numeric_only=True)
+
+elif granularity == "Monthly":
+    grouped_df = filtered_df.groupby(
+        filtered_df.index.dt.to_period('M')
+    ).sum(numeric_only=True)
+
+elif granularity == "Yearly":
+    grouped_df = filtered_df.groupby(
+        filtered_df.index.dt.to_period('Y')
+    ).sum(numeric_only=True)
+
+# Reset index
+grouped_df = grouped_df.reset_index()
 
 #------------------------------------------------
 # Date range selector
