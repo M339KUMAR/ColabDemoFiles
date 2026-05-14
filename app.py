@@ -276,22 +276,22 @@ if filtered_df.empty:
 # =====================================
 if granularity == "Daily":
     grouped_df = filtered_df.groupby(
-        filtered_df.index.dt.date
+        filtered_df.index.date
     ).sum(numeric_only=True)
 
 elif granularity == "Weekly":
     grouped_df = filtered_df.groupby(
-        filtered_df.index.dt.to_period('W')
+        filtered_df.index.to_period('W')
     ).sum(numeric_only=True)
 
 elif granularity == "Monthly":
     grouped_df = filtered_df.groupby(
-        filtered_df.index.dt.to_period('M')
+        filtered_df.index.to_period('M')
     ).sum(numeric_only=True)
 
 elif granularity == "Yearly":
     grouped_df = filtered_df.groupby(
-        filtered_df.index.dt.to_period('Y')
+        filtered_df.index.to_period('Y')
     ).sum(numeric_only=True)
 
 # Reset index
