@@ -1,4 +1,4 @@
-# Date                                             
+# Date                                              
 # Children apprehended and placed in CBP custody       
 # Children in CBP custody                              
 # Children transferred out of CBP custody             
