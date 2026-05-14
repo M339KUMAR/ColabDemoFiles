@@ -358,19 +358,22 @@ col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     st.metric(
         "Total Children Care",
-        f"{total_children_care:+,.0f}"
+        f"{total_children_care:+,.0f}",
+        delta_color="normal"
     )
 
 with col2:
     st.metric(
         "Net Intake Pressure",
-        f"{net_intake_pressure:+,.2f}%"
+        f"{net_intake_pressure:+,.2f}%",
+        delta_color="normal"
     )
 
 with col3:
     st.metric(
         "Care Load Volatility Index",
-        f"{volatility_index:+,.2f}%"
+        f"{volatility_index:+,.2f}%",
+        delta_color="normal"
     )
 
 #col4, col5 = st.columns(2)
@@ -378,13 +381,15 @@ with col3:
 with col4:
     st.metric(
         "Backlog Accumulation Rate",
-        f"{backlog_rate:+,.2f}%"
+        f"{backlog_rate:+,.2f}%",
+        delta_color="normal"
     )
 
 with col5:
     st.metric(
         "Discharge Offset Ratio",
         f"{discharge_ratio:+,.2f}"
+        delta_color="normal"
     )
 
 
