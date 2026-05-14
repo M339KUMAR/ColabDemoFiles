@@ -388,7 +388,7 @@ with col4:
 with col5:
     st.metric(
         "Discharge Offset Ratio",
-        f"{discharge_ratio:+,.2f}"
+        f"{discharge_ratio:+,.2f}",
         delta_color="normal"
     )
 
