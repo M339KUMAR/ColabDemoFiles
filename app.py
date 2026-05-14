@@ -307,7 +307,7 @@ st.write(grouped_df.columns.tolist())
 total_children_care = (grouped_df['Children in CBP custody'].iloc[-1]+grouped_df['Children in HHS Care'].iloc[-1])
 
 # Intake
-total_intake = grouped_df['Children apprehended and placed in CBP custody'].iloc[-1]
+total_intake = grouped_df['Children apprehended and placed in CBP custody*'].iloc[-1]
 
 # Discharge
 total_discharge = grouped_df['Children discharged from HHS Care'].iloc[-1]
