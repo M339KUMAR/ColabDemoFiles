@@ -350,7 +350,7 @@ else:
 # =====================================
 # KPI DASHBOARD
 # =====================================
-st.title("🔑 Key Performance Indicators")
+st.title("🔑 Key Performance Indicators - Filtered")
 st.write("Select the Date Range & Granularity for KPI Metrics")
 
 col1, col2, col3, col4, col5 = st.columns(5)
