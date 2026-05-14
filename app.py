@@ -31,6 +31,7 @@ st.write("***📌US-HHS Unaccompanied Children Program  Dashboard***")
 
 st.dataframe(df)
 
+st.write("***EXPLORATORY DATA ANALYSIS***")
 #from ydata_profiling import ProfileReport
 report = ProfileReport(df, explorative=True)
 # Save report
@@ -189,7 +190,7 @@ backlog_delta = (current_backlog- previous_backlog)
 # KPI SECTION
 # -------------------------------
 #st.subheader("🔑 Key Metrics")
-st.subheader("🔑 Key Performance Indicators")
+st.subheader("🔑 Key Performance Indicators- Overall")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -286,6 +287,100 @@ elif granularity == "Yearly":
 
 # Reset index
 grouped_df = grouped_df.reset_index()
+
+
+# =====================================
+# KPI CALCULATIONS
+# =====================================
+
+# Total Children Care
+total_children_care = (grouped_df['Children in CBP custody'].iloc[-1]+grouped_df['Children in HHS Care'].iloc[-1])
+
+# Intake
+total_intake = grouped_df['Children apprehended and placed in CBP custody'].iloc[-1]
+
+# Discharge
+total_discharge = grouped_df['Children discharged from HHS Care'].iloc[-1]
+
+# Net Intake Pressure
+if total_intake != 0:
+    net_intake_pressure = ((total_intake - total_discharge) / total_intake) * 100
+else:
+    net_intake_pressure = 0
+
+# Care Load Volatility Index
+load_col = grouped_df['Children in CBP custody']
+
+if load_col.mean() != 0:
+    volatility_index = (load_col.std() / load_col.mean()) * 100
+else:
+    volatility_index = 0
+
+# Backlog Accumulation Rate
+initial_load = grouped_df['Children in CBP custody'].iloc[0]
+current_load = grouped_df['Children in CBP custody'].iloc[-1]
+
+if initial_load != 0:
+    backlog_rate = ((current_load - initial_load) / initial_load) * 100
+else:
+    backlog_rate = 0
+
+# Discharge Offset Ratio
+if total_intake != 0:
+    discharge_ratio = (total_discharge / total_intake)
+else:
+    discharge_ratio = 0
+
+
+# =====================================
+# KPI DASHBOARD
+# =====================================
+st.title("🔑 Key Performance Indicators")
+st.write("Select the Date Range & Granularity for KPI Metrics")
+
+col1, col2, col3, col4, col5 = st.columns(5)
+
+with col1:
+    st.metric(
+        "Total Children Care",
+        f"{total_children_care:,.0f}"
+    )
+
+with col2:
+    st.metric(
+        "Net Intake Pressure",
+        f"{net_intake_pressure:.2f}%"
+    )
+
+with col3:
+    st.metric(
+        "Care Load Volatility Index",
+        f"{volatility_index:.2f}%"
+    )
+
+#col4, col5 = st.columns(2)
+
+with col4:
+    st.metric(
+        "Backlog Accumulation Rate",
+        f"{backlog_rate:.2f}%"
+    )
+
+with col5:
+    st.metric(
+        "Discharge Offset Ratio",
+        f"{discharge_ratio:.2f}"
+    )
+
+
+# =====================================
+# SHOW FILTERED DATA
+# =====================================
+st.subheader(
+    f"{granularity} Aggregated Data"
+)
+
+st.dataframe(grouped_df)
 
 #------------------------------------------------
 # Date range selector
