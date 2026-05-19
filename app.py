@@ -407,52 +407,51 @@ st.subheader(
 
 st.dataframe(grouped_df)
 #-------------------------------------------
-'''
+
 # Initialize session state
-if "input_value" not in st.session_state:
-    st.session_state.input_value = ""
+#if "input_value" not in st.session_state:
+#    st.session_state.input_value = ""
 
 # Function to validate input
-def validate_input():
-    value = st.session_state.input_value
+#def validate_input():
+#    value = st.session_state.input_value
 
     # Check if input is an integer
-    try:
-        int(value)
+#    try:
+#        int(value)
 
-    except ValueError:
-        st.error("❌ Please enter a valid integer number.")
+#    except ValueError:
+#        st.error("❌ Please enter a valid integer number.")
         
         # Clear the field
-        st.session_state.input_value = ""
+#        st.session_state.input_value = ""
 
 # Label + input field
-st.text_input(
-    label="Enter an Integer Number:",
-    key="input_value",
-    on_change=validate_input
-)
+#st.text_input(
+#    label="Enter an Integer Number:",
+#    key="input_value",
+#    on_change=validate_input
+#)
 
 # Display valid input
-if st.session_state.input_value != "":
-    st.success(
-        f"✅ Valid Integer Entered: {int(st.session_state.input_value)}"
-    )
+#if st.session_state.input_value != "":
+#    st.success(
+#        f"✅ Valid Integer Entered: {int(st.session_state.input_value)}"
+#    )
 #------------------------------------------------
-number = st.number_input(
-    "Enter a Number:",
-    min_value=0,
-    step=1,
-    format="%d"
-) 
-
-st.write("Entered Number:", number)'''
+#number = st.number_input(
+#    "Enter a Number:",
+#    min_value=0,
+#    step=1,
+#    format="%d"
+#) 
 
 col1, col2 = st.columns([1, 3])
 
 with col1:
     num = st.number_input("Enter Integer", step=1)
 
+st.write("Entered Number:", num)
 
 #This automatically restricts input to integers and avoids
 # Date range selector
