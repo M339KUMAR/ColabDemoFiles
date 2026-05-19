@@ -14,6 +14,9 @@ from ydata_profiling import ProfileReport
 #from data_profiling.profile_report import ProfileReport
 import streamlit.components.v1 as components
 
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
 st.set_page_config(layout="wide")
 
 #df = pd.read_excel('/content/sample_data/HHS_Unaccompanied_Alien_Children_Program.xlsx')
