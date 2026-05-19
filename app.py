@@ -503,9 +503,8 @@ if st.button("Predict"):
     
     else:
        st.success("✅ All values are valid")
-        
-        # Further processing
-        st.write("Proceeding with prediction...")
+       # Further processing
+       st.write("Proceeding with prediction...")
 #------------------------------------------------------
     # Check if any field is empty
     #if any(v is None for v in values):
