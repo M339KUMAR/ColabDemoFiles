@@ -449,33 +449,42 @@ st.subheader(f"Machine Learning Model Predictions")
 st.write("****📌Note: All the below fields are Mandatory****")
 
 col1, col2 = st.columns([1, 3])
-
 with col1:
     CAPCBP = st.number_input("Children apprehended and placed in CBP custody", step=1)
 
-#st.write("Entered Number CAPCBP:", CAPCBP) 
-
 col1, col2 = st.columns([1, 3])
-
 with col1:
     CinCBP = st.number_input("Children in CBP custody", step=1)
-
-#st.write("Entered Number CinCBP:", CinCBP) 
+ 
+col1, col2 = st.columns([1, 3])
+with col1:
+    CtoCBP = st.number_input("Children transferred out of CBP custody", step=1)
 
 col1, col2 = st.columns([1, 3])
-
 with col1:
-    CinCBP = st.number_input("Children transferred out of CBP custody", step=1)
+    CinHHS = st.number_input("Children in HHS Care", step=1)
 
 col1, col2 = st.columns([1, 3])
-
 with col1:
-    CinCBP = st.number_input("Children in HHS Care", step=1)
+    CdHHS = st.number_input("Children discharged from HHS Care ", step=1)
 
-col1, col2 = st.columns([1, 3])
+if st.button("Process Data"):
 
-with col1:
-    CinCBP = st.number_input("Children discharged from HHS Care ", step=1)
+    # Store all values in a list
+    values = [CAPCBP, CinCBP, CtoCBP, CinHHS, CdHHS]
+
+    # Check if any field is empty
+    if any(v is None for v in values):
+        st.error("❌ Please fill all 5 fields.")
+
+    else:
+        st.success("✅ All fields entered correctly!")
+
+        # Further processing
+        total = sum(values)
+
+        st.write("Total =", total)
+
 
 #This automatically restricts input to integers and avoids
 # Date range selector
