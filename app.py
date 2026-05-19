@@ -439,6 +439,16 @@ if st.session_state.input_value != "":
         f"✅ Valid Integer Entered: {int(st.session_state.input_value)}"
     )
 #------------------------------------------------
+number = st.number_input(
+    "Enter an Integer Number:",
+    min_value=0,
+    step=1,
+    format="%d"
+) 
+
+st.write("Entered Number:", number)
+
+#This automatically restricts input to integers and avoids
 # Date range selector
 #min_date = df.index.min()
 #max_date = df.index.max()
