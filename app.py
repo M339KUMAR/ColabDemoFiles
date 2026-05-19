@@ -468,7 +468,7 @@ col1, col2 = st.columns([3, 1])
 with col1:
     CdHHS = st.number_input("Children discharged from HHS Care ", step=1)
 
-if st.button("Process Data"):
+if st.button("Predict"):
 
     # Store all values in a list
     values = [CAPCBP, CinCBP, CtoCBP, CinHHS, CdHHS]
