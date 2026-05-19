@@ -476,43 +476,33 @@ if st.button("Predict"):
     # Store all values in a list
     values = [CAPCBP, CinCBP, CtoCBP, CinHHS, CdHHS]
 
-errors = []
+    errors = []
 
     # Range validation
     if not (1 <= CAPCBP <= 333):
-        errors.append(
-            "Value must be between 1 and 333"
-        )
+       errors.append("Value must be between 1 and 333")
 
     if not (7 <= CinCBP <= 531):
-        errors.append(
-            "Value must be between 7 and 531"
-        )
+       errors.append("Value must be between 7 and 531")
 
     if not (0 <= CtoCBP <= 440):
-        errors.append(
-            "Value must be between 0 and 440"
-        )
+       errors.append("Value must be between 0 and 440")
 
     if not (1972 <= CinHHS <= 11516):
-        errors.append(
-            "Value must be between 1972 and 11516"
-        )
+       errors.append("Value must be between 1972 and 11516")
 
     if not (0 <= CdHHS <= 505):
-        errors.append(
-            "Value must be between 0 and 505"
-        )
+       errors.append("Value must be between 0 and 505")
 
     # Show errors
     if errors:
-        st.error("❌ Invalid Inputs")
+       st.error("❌ Invalid Inputs")
 
-        for error in errors:
-            st.write(error)
+       for error in errors:
+           st.write(error)
 
-    else:
-        st.success("✅ All values are valid")
+     else:
+         st.success("✅ All values are valid")
         
         # Further processing
         st.write("Proceeding with prediction...")
