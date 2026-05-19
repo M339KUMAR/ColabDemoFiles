@@ -500,9 +500,9 @@ if st.button("Predict"):
 
        for error in errors:
            st.write(error)
-
-     else:
-         st.success("✅ All values are valid")
+    
+    else:
+       st.success("✅ All values are valid")
         
         # Further processing
         st.write("Proceeding with prediction...")
