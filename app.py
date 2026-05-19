@@ -407,7 +407,7 @@ st.subheader(
 
 st.dataframe(grouped_df)
 #-------------------------------------------
-
+'''
 # Initialize session state
 if "input_value" not in st.session_state:
     st.session_state.input_value = ""
@@ -446,7 +446,13 @@ number = st.number_input(
     format="%d"
 ) 
 
-st.write("Entered Number:", number)
+st.write("Entered Number:", number)'''
+
+col1, col2 = st.columns([1, 3])
+
+with col1:
+    num = st.number_input("Enter Integer", step=1)
+
 
 #This automatically restricts input to integers and avoids
 # Date range selector
