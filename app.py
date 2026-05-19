@@ -448,11 +448,11 @@ st.dataframe(grouped_df)
 st.subheader(f"Machine Learning Model Predictions")
 st.write("****📌Note: All the below fields are Mandatory****")
 
-col1, col2 = st.columns([3, 1])
+col1, col2 = st.columns([3, 0.25])
 with col1:
     CAPCBP = st.number_input("Children apprehended and placed in CBP custody", step=1)
 
-col1, col2 = st.columns([3, 1])
+col1, col2 = st.columns([3, 0.5])
 with col1:
     CinCBP = st.number_input("Children in CBP custody", step=1)
  
@@ -460,11 +460,11 @@ col1, col2 = st.columns([3, 1])
 with col1:
     CtoCBP = st.number_input("Children transferred out of CBP custody", step=1)
 
-col1, col2 = st.columns([3, 1])
+col1, col2 = st.columns([3, 0.5])
 with col1:
     CinHHS = st.number_input("Children in HHS Care", step=1)
 
-col1, col2 = st.columns([3, 1])
+col1, col2 = st.columns([3, 0.5])
 with col1:
     CdHHS = st.number_input("Children discharged from HHS Care ", step=1)
 
