@@ -448,12 +448,21 @@ st.dataframe(grouped_df)
 st.subheader(f"Machine Learning Model Predictions")
 st.write("****📌Note: All the below fields are Mandatory****")
 
+col1, col2 = st.columns([3, 1])
+
+with col1:
+    CAPCBP = st.number_input("Children apprehended and placed in CBP custody", step=1)
+
+st.write("Entered Number CAPCBP:", CAPCBP) 
+
 col1, col2 = st.columns([1, 3])
 
 with col1:
-    num = st.number_input("Children apprehended and placed in CBP custody", step=1)
+    CinCBP = st.number_input("Children in CBP custody", step=1)
 
-st.write("Entered Number:", num) 
+st.write("Entered Number CinCBP:", CinCBP) 
+
+
 
 #This automatically restricts input to integers and avoids
 # Date range selector
