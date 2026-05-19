@@ -492,7 +492,7 @@ if st.button("Predict"):
        errors.append("4.Value must be between 1972 and 11516")
 
     if not (0 <= CdHHS <= 505):
-       errors.append("5.Value must be between 0 and 505")
+       errors.append("5.Value must be between 0 and 505") 
 
     # Show errors
     if errors:
