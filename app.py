@@ -453,23 +453,23 @@ st.write("****📌Note: All the below fields are Mandatory****")
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CAPCBP = st.number_input("Children apprehended and placed in CBP custody (range:1-333)", step=1)
+    CAPCBP = st.number_input("1.Children apprehended and placed in CBP custody (range:1-333)", step=1)
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CinCBP = st.number_input("Children in CBP custody (range:7-531)", step=1)
+    CinCBP = st.number_input("2.Children in CBP custody (range:7-531)", step=1)
  
 col1, col2 = st.columns([3, 1])
 with col1:
-    CtoCBP = st.number_input("Children transferred out of CBP custody (range:0-440)", step=1)
+    CtoCBP = st.number_input("3.Children transferred out of CBP custody (range:0-440)", step=1)
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CinHHS = st.number_input("Children in HHS Care (range:1972-11516)", step=1)
+    CinHHS = st.number_input("4.Children in HHS Care (range:1972-11516)", step=1)
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CdHHS = st.number_input("Children discharged from HHS Care (range:0-505)", step=1)
+    CdHHS = st.number_input("5.Children discharged from HHS Care (range:0-505)", step=1)
 
 if st.button("Predict"):
 
@@ -480,19 +480,19 @@ if st.button("Predict"):
 
     # Range validation
     if not (1 <= CAPCBP <= 333):
-       errors.append("Value must be between 1 and 333")
+       errors.append("1.Value must be between 1 and 333")
 
     if not (7 <= CinCBP <= 531):
-       errors.append("Value must be between 7 and 531")
+       errors.append("2.Value must be between 7 and 531")
 
     if not (0 <= CtoCBP <= 440):
-       errors.append("Value must be between 0 and 440")
+       errors.append("3.Value must be between 0 and 440")
 
     if not (1972 <= CinHHS <= 11516):
-       errors.append("Value must be between 1972 and 11516")
+       errors.append("4.Value must be between 1972 and 11516")
 
     if not (0 <= CdHHS <= 505):
-       errors.append("Value must be between 0 and 505")
+       errors.append("5.Value must be between 0 and 505")
 
     # Show errors
     if errors:
