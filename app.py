@@ -453,7 +453,7 @@ st.write("****📌Note: All the below fields are Mandatory****")
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CAPCBP = st.number_input("Children apprehended and placed in CBP custody", step=1)
+    CAPCBP = st.number_input("Children apprehended and placed in CBP custody (range: 1-333)", step=1)
 
 col1, col2 = st.columns([3, 1])
 with col1:
