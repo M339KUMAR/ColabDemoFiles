@@ -440,7 +440,7 @@ if st.session_state.input_value != "":
     )
 #------------------------------------------------
 number = st.number_input(
-    "Enter an Integer Number:",
+    "Enter a Number:",
     min_value=0,
     step=1,
     format="%d"
