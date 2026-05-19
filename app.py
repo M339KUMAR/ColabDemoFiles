@@ -449,7 +449,7 @@ st.dataframe(grouped_df)
 #    format="%d"
 #) 
 st.subheader(f"Machine Learning Model Predictions")
-st.write("****📌Note: All the below fields are Mandatory****")
+st.write("****📌Note: All fields are Mandatory, pls enter your values****")
 
 col1, col2 = st.columns([3, 1])
 with col1:
