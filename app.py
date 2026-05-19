@@ -445,6 +445,9 @@ st.dataframe(grouped_df)
 #    step=1,
 #    format="%d"
 #) 
+st.subheader(
+    f"Machine Learning Model Predictions"
+)
 
 col1, col2 = st.columns([1, 3])
 
