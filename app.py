@@ -449,7 +449,7 @@ st.dataframe(grouped_df)
 col1, col2 = st.columns([1, 3])
 
 with col1:
-    num = st.number_input("Enter Integer", step=1)
+    num = st.number_input("Children apprehended and placed in CBP custody", step=1)
 
 st.write("Entered Number:", num)
 
