@@ -453,23 +453,23 @@ st.write("****📌Note: All the below fields are Mandatory****")
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CAPCBP = st.number_input("Children apprehended and placed in CBP custody (range: 1-333)", step=1)
+    CAPCBP = st.number_input("Children apprehended and placed in CBP custody (range:1-333)", step=1)
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CinCBP = st.number_input("Children in CBP custody", step=1)
+    CinCBP = st.number_input("Children in CBP custody (range:7-531)", step=1)
  
 col1, col2 = st.columns([3, 1])
 with col1:
-    CtoCBP = st.number_input("Children transferred out of CBP custody", step=1)
+    CtoCBP = st.number_input("Children transferred out of CBP custody (range:0-440)", step=1)
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CinHHS = st.number_input("Children in HHS Care", step=1)
+    CinHHS = st.number_input("Children in HHS Care (range:1972-11516)", step=1)
 
 col1, col2 = st.columns([3, 1])
 with col1:
-    CdHHS = st.number_input("Children discharged from HHS Care ", step=1)
+    CdHHS = st.number_input("Children discharged from HHS Care (range:0-505)", step=1)
 
 if st.button("Predict"):
 
