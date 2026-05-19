@@ -451,7 +451,7 @@ col1, col2 = st.columns([1, 3])
 with col1:
     num = st.number_input("Children apprehended and placed in CBP custody", step=1)
 
-st.write("Entered Number:", num)
+st.write("Entered Number:", num) 
 
 #This automatically restricts input to integers and avoids
 # Date range selector
