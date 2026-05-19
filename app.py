@@ -476,18 +476,59 @@ if st.button("Predict"):
     # Store all values in a list
     values = [CAPCBP, CinCBP, CtoCBP, CinHHS, CdHHS]
 
-    # Check if any field is empty
-    if any(v is None for v in values):
-        st.error("❌ Please fill all 5 fields.")
+errors = []
+
+    # Range validation
+    if not (1 <= CAPCBP <= 333):
+        errors.append(
+            "Value must be between 1 and 333"
+        )
+
+    if not (7 <= CinCBP <= 531):
+        errors.append(
+            "Value must be between 7 and 531"
+        )
+
+    if not (0 <= CtoCBP <= 440):
+        errors.append(
+            "Value must be between 0 and 440"
+        )
+
+    if not (1972 <= CinHHS <= 11516):
+        errors.append(
+            "Value must be between 1972 and 11516"
+        )
+
+    if not (0 <= CdHHS <= 505):
+        errors.append(
+            "Value must be between 0 and 505"
+        )
+
+    # Show errors
+    if errors:
+        st.error("❌ Invalid Inputs")
+
+        for error in errors:
+            st.write(error)
 
     else:
-        st.success("✅ All fields entered correctly!")
+        st.success("✅ All values are valid")
+        
+        # Further processing
+        st.write("Proceeding with prediction...")
+#------------------------------------------------------
+    # Check if any field is empty
+    #if any(v is None for v in values):
+        #st.error("❌ Please fill all 5 fields.")
+
+    #else:
+        #st.success("✅ All fields entered correctly!")
 
         # Further processing
-        total = sum(values)
+        #total = sum(values)
 
-        st.write(grouped_df.columns.tolist())
-        st.write("Total =", total)
+        #st.write(grouped_df.columns.tolist())
+        #st.write("Total =", total)
 
 @st.cache_resource
 def train_model():
