@@ -486,6 +486,7 @@ if st.button("Predict"):
         # Further processing
         total = sum(values)
 
+        st.write(grouped_df.columns.tolist())
         st.write("Total =", total)
 
 @st.cache_resource
