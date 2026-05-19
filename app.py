@@ -488,6 +488,13 @@ if st.button("Predict"):
 
         st.write("Total =", total)
 
+@st.cache_resource
+def train_model():
+    model = LinearRegression()
+    model.fit(X, y)
+    return model
+
+model = train_model()
 
 #This automatically restricts input to integers and avoids
 # Date range selector
