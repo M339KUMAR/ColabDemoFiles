@@ -1,0 +1,3 @@
+2026-10-19 11:39:50,248 - INFO - Agent started successfully
+2026-10-19 11:39:50,249 - WARNING - Received unexpected query format
+2026-10-19 11:39:50,249 - ERROR - NLU module failed to parse query
